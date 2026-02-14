@@ -132,11 +132,18 @@ video{
 <div class="screen">
 
     <!-- Назад на страницу выбора -->
-    <a href="choose.html" class="back-btn">
-        <svg viewBox="0 0 24 24">
-            <path d="M15 18l-6-6 6-6"/>
-        </svg>
-    </a>
+    <a href="choose.html" style="
+position:fixed;
+top:20px;
+left:20px;
+width:32px;
+height:32px;
+z-index:9999;">
+    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="white">
+        <path d="M15 18l-6-6 6-6"/>
+    </svg>
+</a>
+
 
     <div class="top">
         <img src="cover.jpg" class="cover">
@@ -238,6 +245,7 @@ audio.addEventListener("ended", () => {
 
 </body>
 </html>
+
 
 
 
