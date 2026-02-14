@@ -98,15 +98,16 @@ video{
     width:0%;
 }
 
-/* ===== СТРЕЛКА НАЗАД ===== */
+/* ===== СТРЕЛКА НАЗАД (ПЕРЕНЕСЕНА ВВЕРХ) ===== */
 
 .back-btn{
     position:absolute;
-    bottom:30px;
+    top:40px;      /* было bottom */
     left:20px;
     width:26px;
     height:26px;
     opacity:0.8;
+    z-index:10;
 }
 
 .back-btn svg{
@@ -121,6 +122,13 @@ video{
 <body>
 
 <div class="screen">
+
+    <!-- Назад на страницу выбора -->
+    <a href="choose.html" class="back-btn">
+        <svg viewBox="0 0 24 24">
+            <path d="M15 18l-6-6 6-6"/>
+        </svg>
+    </a>
 
     <div class="top">
         <img src="cover.jpg" class="cover">
@@ -142,13 +150,6 @@ video{
     <video id="roseVideo" preload="auto" playsinline muted>
         <source src="rose.mp4" type="video/mp4">
     </video>
-
-    <!-- Назад на страницу выбора -->
-    <a href="choose.html" class="back-btn">
-        <svg viewBox="0 0 24 24">
-            <path d="M15 18l-6-6 6-6"/>
-        </svg>
-    </a>
 
 </div>
 
@@ -229,3 +230,5 @@ audio.addEventListener("ended", () => {
 
 </body>
 </html>
+
+
