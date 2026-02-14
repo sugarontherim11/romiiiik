@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1.0">
+<title>Flip</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+
+<style>
+
+html, body{
+    margin:0;
+    padding:0;
+    background:#ffffff;
+    font-family:'Playfair Display', serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.screen{
+    width:390px;
+    height:844px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    text-align:center;
+}
+
+/* Картинка */
+
+.rotating-photo{
+    width:260px;
+    animation: rotateTwice 3s ease-in-out forwards;
+}
+
+@keyframes rotateTwice{
+    0%   { transform:rotate(0deg); }
+    100% { transform:rotate(720deg); }
+}
+
+/* Текст */
+
+.flip-text{
+    margin-top:50px;
+    font-size:28px;
+    color:#000;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="screen" id="screen">
+
+    <img src="your-photo.jpg" class="rotating-photo">
+
+    <div class="flip-text">
+        Flip Your Phone
+    </div>
+
+</div>
+
+<script>
+
+// Получаем параметр
+const params = new URLSearchParams(window.location.search);
+const target = params.get("target");
+
+let nextPage = "choose.html";
+
+if(target === "envelope"){
+    nextPage = "envelope.html";
+}
+if(target === "heart"){
+    nextPage = "vinyl.html";
+}
+if(target === "camera"){
+    nextPage = "album.html";
+}
+
+// Автопереход
+setTimeout(() => {
+    window.location.href = nextPage;
+}, 3500);
+
+// Переход по нажатию
+document.getElementById("screen").addEventListener("click", () => {
+    window.location.href = nextPage;
+});
+
+</script>
+
+</body>
+</html>

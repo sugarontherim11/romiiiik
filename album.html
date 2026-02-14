@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Album</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    background:#e9e9e9;
+    font-family:'Oswald', sans-serif;
+    display:flex;
+    justify-content:center;
+}
+
+.screen{
+    width:390px;
+    background:#e9e9e9;
+    padding:30px 20px 80px;
+    box-sizing:border-box;
+}
+
+/* ===== ВОЛНА ===== */
+
+.wave{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.row{
+    display:flex;
+    gap:15px;
+}
+
+.row img{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+.row:nth-child(odd){
+    justify-content:flex-start;
+}
+
+.row:nth-child(even){
+    justify-content:flex-end;
+}
+
+/* центрированный ряд */
+
+.center{
+    justify-content:center !important;
+}
+
+/* ===== ТЕКСТ ===== */
+
+.text-block{
+    text-align:center;
+    margin:80px 0;
+}
+
+.text-block h1{
+    font-size:26px;
+    font-weight:300;
+    margin:0;
+}
+
+.heart{
+    color:#c40000;
+    font-size:22px;
+    margin:10px 0;
+}
+
+/* ===== КНОПКА ===== */
+
+.bottom-button{
+    display:flex;
+    justify-content:center;
+    margin-top:60px;
+}
+
+.play-button{
+    width:140px;
+    height:60px;
+    background:#c40000;
+    border-radius:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+}
+
+.play-button svg{
+    width:26px;
+    height:26px;
+    fill:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="screen">
+
+<div class="wave">
+
+<!-- ===== ПЕРВЫЕ 24 ===== -->
+
+<!-- ПЕРВЫЕ 24 -->
+
+<!-- ПЕРВЫЕ 24 -->
+
+<div class="row"><img src="a1.jpg"><img src="a2.jpg"><img src="a3.jpg"></div>
+<div class="row"><img src="a4.jpg"><img src="a5.jpg"><img src="a6.jpg"></div>
+<div class="row"><img src="a7.jpg"><img src="a8.jpg"><img src="a9.jpg"></div>
+<div class="row"><img src="a10.jpg"><img src="a11.jpg"><img src="a12.jpg"></div>
+<div class="row"><img src="a13.jpg"><img src="a14.jpg"><img src="a15.jpg"></div>
+<div class="row"><img src="a16.jpg"><img src="a17.jpg"><img src="a18.jpg"></div>
+<div class="row"><img src="a19.jpg"><img src="a20.jpg"><img src="a21.jpg"></div>
+<div class="row"><img src="a22.jpg"><img src="a23.jpg"><img src="a24.jpg"></div>
+
+<!-- 25-я по центру -->
+
+<div class="row center">
+    <img src="a25.jpg">
+</div>
+
+<!-- ❤️ ТЕКСТ ПОСЛЕ 25-Й -->
+
+<div class="text-block">
+    <div class="heart">❤</div>
+    <h1>ЗНАЮ, ТЫ — МОЙ ЧЕЛОВЕК</h1>
+    <div class="heart">❤</div>
+</div>
+
+<!-- 26–49 -->
+
+<div class="row"><img src="a26.jpg"><img src="a27.jpg"><img src="a28.jpg"></div>
+<div class="row"><img src="a29.jpg"><img src="a30.jpg"><img src="a31.jpg"></div>
+<div class="row"><img src="a32.jpg"><img src="a33.jpg"><img src="a34.jpg"></div>
+<div class="row"><img src="a35.jpg"><img src="a36.jpg"><img src="a37.jpg"></div>
+<div class="row"><img src="a38.jpg"><img src="a39.jpg"><img src="a40.jpg"></div>
+<div class="row"><img src="a41.jpg"><img src="a42.jpg"><img src="a43.jpg"></div>
+<div class="row"><img src="a44.jpg"><img src="a45.jpg"><img src="a46.jpg"></div>
+<div class="row"><img src="a47.jpg"><img src="a48.jpg"><img src="a49.jpg"></div>
+
+<!-- 50-я по центру -->
+
+<div class="row center">
+    <img src="a50.jpg">
+</div>
+
+
+
+</div>
+
+<!-- ===== КНОПКА ===== -->
+
+<div class="bottom-button">
+    <a href="choose.html" class="play-button">
+        <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+    </a>
+</div>
+
+</div>
+
+</body>
+</html>

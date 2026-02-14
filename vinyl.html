@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1.0">
+<title>Love</title>
+
+<style>
+
+html, body{
+    margin:0;
+    padding:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:-apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== IPHONE 13 ===== */
+
+.screen{
+    width:390px;
+    height:844px;
+    position:relative;
+    overflow:hidden;
+    background:#000;
+    color:white;
+}
+
+/* ===== ВИДЕО ===== */
+
+video{
+    position:absolute;
+    bottom:-60px;
+    width:100%;
+}
+
+/* ===== ВЕРХ ===== */
+
+.top{
+    text-align:center;
+    margin-top:40px;
+    position:relative;
+    z-index:2;
+}
+
+.cover{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border:3px solid #fff;
+}
+
+.title{
+    margin-top:16px;
+    font-size:20px;
+}
+
+.artist{
+    opacity:0.6;
+    margin-top:4px;
+    font-size:14px;
+}
+
+/* ===== PLAY ===== */
+
+.play-btn{
+    margin:18px auto 0;
+    width:44px;
+    height:44px;
+    background:white;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.play-btn svg{
+    width:20px;
+    height:20px;
+    fill:black;
+}
+
+/* ===== PROGRESS ===== */
+
+.progress{
+    width:70%;
+    height:2px;
+    background:#444;
+    margin:18px auto 0;
+}
+
+.progress-bar{
+    height:2px;
+    background:white;
+    width:0%;
+}
+
+/* ===== СТРЕЛКА НАЗАД ===== */
+
+.back-btn{
+    position:absolute;
+    bottom:30px;
+    left:20px;
+    width:26px;
+    height:26px;
+    opacity:0.8;
+}
+
+.back-btn svg{
+    width:100%;
+    height:100%;
+    fill:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="screen">
+
+    <div class="top">
+        <img src="cover.jpg" class="cover">
+        <div class="title">Это любовь</div>
+        <div class="artist">Скриптонит</div>
+
+        <div class="play-btn" id="playBtn">
+            <svg viewBox="0 0 24 24">
+                <path id="iconPath" d="M8 5v14l11-7z"/>
+            </svg>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <!-- Видео -->
+    <video id="roseVideo" preload="auto" playsinline muted>
+        <source src="rose.mp4" type="video/mp4">
+    </video>
+
+    <!-- Назад на страницу выбора -->
+    <a href="choose.html" class="back-btn">
+        <svg viewBox="0 0 24 24">
+            <path d="M15 18l-6-6 6-6"/>
+        </svg>
+    </a>
+
+</div>
+
+<audio id="audio" src="song.mp3"></audio>
+
+<script>
+
+const video = document.getElementById("roseVideo");
+const audio = document.getElementById("audio");
+const btn = document.getElementById("playBtn");
+const progressBar = document.getElementById("progressBar");
+const iconPath = document.getElementById("iconPath");
+
+let isPlaying = false;
+let finished = false;
+
+/* Первый стоп-кадр */
+video.pause();
+video.currentTime = 0;
+
+/* PLAY / PAUSE */
+
+btn.addEventListener("click", () => {
+
+    if(!isPlaying){
+
+        if(finished){
+            audio.currentTime = 0;
+            video.currentTime = 0;
+            progressBar.style.width = "0%";
+            finished = false;
+        }
+
+        audio.play();
+        video.play();
+
+        iconPath.setAttribute("d","M6 5h4v14H6zm8 0h4v14h-4z");
+        isPlaying = true;
+
+    }else{
+
+        audio.pause();
+        video.pause();
+
+        iconPath.setAttribute("d","M8 5v14l11-7z");
+        isPlaying = false;
+    }
+});
+
+/* СИНХРОНИЗАЦИЯ */
+
+audio.addEventListener("timeupdate", () => {
+
+    if(audio.duration){
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = percent + "%";
+    }
+
+    if(Math.abs(video.currentTime - audio.currentTime) > 0.3){
+        video.currentTime = audio.currentTime;
+    }
+});
+
+/* КОНЕЦ */
+
+audio.addEventListener("ended", () => {
+
+    video.pause();
+    video.currentTime = video.duration - 0.05;
+
+    iconPath.setAttribute("d","M8 5v14l11-7z");
+
+    isPlaying = false;
+    finished = true;
+});
+
+</script>
+
+</body>
+</html>

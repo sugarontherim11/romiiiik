@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Choose</title>
+
+<style>
+
+html, body{
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    opacity:0;
+    transition:opacity 0.8s ease;
+}
+
+body.show{
+    opacity:1;
+}
+
+/* ===== ЭКРАН IPHONE 13 ===== */
+
+.screen{
+    width:100%;
+    max-width:390px;
+    height:100dvh;
+    max-height:844px;
+    background:url("your-background.jpg") center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:70px;
+    padding-top:calc(env(safe-area-inset-top) + 40px);
+    padding-bottom:env(safe-area-inset-bottom);
+    box-sizing:border-box;
+}
+
+/* ===== ОБЩИЙ СТИЛЬ ===== */
+
+.option{
+    width:220px;
+    height:220px;
+    object-fit:contain;
+    cursor:pointer;
+    transition:transform 0.3s ease;
+}
+
+.option:hover{
+    transform:scale(1.05);
+}
+
+.option:active{
+    transform:scale(0.95);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="screen">
+
+    <!-- КОНВЕРТ -->
+    <a href="flip.html?target=envelope">
+        <img src="envelope.png" class="option">
+    </a>
+
+    <!-- СЕРДЦЕ -->
+    <a href="flip.html?target=heart">
+        <img src="plastinka.png" class="option">
+    </a>
+
+    <!-- КАМЕРА -->
+    <a href="flip.html?target=camera">
+        <img src="vinyl.png" class="option">
+    </a>
+
+</div>
+
+<script>
+window.addEventListener("load", () => {
+    document.body.classList.add("show");
+});
+</script>
+
+</body>
+</html>

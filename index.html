@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1.0">
+<title>Lock</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    background:#ededed;
+    display:flex;
+    justify-content:center;
+}
+
+.phone{
+    width:390px;
+    min-height:100vh;
+    text-align:center;
+    padding-top:50px;
+}
+
+/* сердце */
+.heart{
+    width:260px;
+    margin:0 auto 35px;
+}
+.heart img{
+    width:100%;
+}
+
+/* заголовок */
+.title{
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+    color:#6e0f14;
+    margin-bottom:25px;
+}
+
+/* блок замка */
+.lock{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+.column{
+    width:55px;
+    height:110px;
+    background:#7b0f14;
+    border-radius:8px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    padding:6px 0;
+    color:white;
+}
+
+/* стрелки внутри красного */
+.arrow{
+    font-size:14px;
+    cursor:pointer;
+    user-select:none;
+}
+
+.number{
+    font-size:26px;
+    font-family:'Inter', sans-serif;
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+    <div class="heart">
+        <!-- ВСТАВЬ СВОЁ ФОТО -->
+        <img src="heart.png">
+    </div>
+
+    <div class="title">The Day We Got Together</div>
+
+    <div class="lock">
+
+        <div class="column" onclick="clickColumn(0, event)">
+            <div class="arrow">▲</div>
+            <div class="number" id="d0">0</div>
+            <div class="arrow">▼</div>
+        </div>
+
+        <div class="column" onclick="clickColumn(1, event)">
+            <div class="arrow">▲</div>
+            <div class="number" id="d1">0</div>
+            <div class="arrow">▼</div>
+        </div>
+
+        <div class="column" onclick="clickColumn(2, event)">
+            <div class="arrow">▲</div>
+            <div class="number" id="d2">0</div>
+            <div class="arrow">▼</div>
+        </div>
+
+        <div class="column" onclick="clickColumn(3, event)">
+            <div class="arrow">▲</div>
+            <div class="number" id="d3">0</div>
+            <div class="arrow">▼</div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+let values = [0,0,0,0];
+const correctCode = "0908"; // поменяй на свой
+
+function clickColumn(index, event){
+    const rect = event.currentTarget.getBoundingClientRect();
+    const clickY = event.clientY - rect.top;
+
+    if(clickY < rect.height / 2){
+        values[index] = (values[index] + 1) % 10;
+    } else {
+        values[index] = (values[index] + 9) % 10;
+    }
+
+    document.getElementById("d"+index).innerText = values[index];
+
+    if(values.join("") === correctCode){
+        window.location.href = "next.html";
+    }
+}
+</script>
+
+</body>
+</html>

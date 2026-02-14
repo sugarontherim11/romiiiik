@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Our Days</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@300&display=swap" rel="stylesheet">
+
+<style>
+
+html, body{
+    margin:0;
+    padding:0;
+    height:100%;
+    background:#ededed;
+    font-family:'Playfair Display', serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    transition:opacity 0.8s ease;
+}
+
+body.show{
+    opacity:1;
+}
+
+/* ЭКРАН IPHONE */
+
+.phone{
+    width:100%;
+    max-width:390px;            /* ширина iPhone 13 */
+    height:100dvh;              /* динамическая высота */
+    max-height:844px;
+    background:#ededed;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+    box-sizing:border-box;
+}
+
+/* ===== СЕРДЦЕ ===== */
+
+.heart{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns: repeat(7, 45px);
+    grid-auto-rows: 45px;
+    gap:6px;
+    justify-content:center;
+}
+
+.heart img{
+    width:45px;
+    height:45px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* позиции */
+
+.img1{ grid-column:2; }
+.img2{ grid-column:3; }
+.img3{ grid-column:5; }
+.img4{ grid-column:6; }
+
+.img5{ grid-column:1; grid-row:2; }
+.img6{ grid-column:2; grid-row:2; }
+.img7{ grid-column:3; grid-row:2; }
+.img8{ grid-column:5; grid-row:2; }
+.img9{ grid-column:6; grid-row:2; }
+.img10{ grid-column:7; grid-row:2; }
+
+.img11{ grid-column:2; grid-row:3; }
+.img12{ grid-column:3; grid-row:3; }
+.img13{ grid-column:4; grid-row:3; }
+.img14{ grid-column:5; grid-row:3; }
+.img15{ grid-column:6; grid-row:3; }
+
+.row4-1{ grid-column:3; grid-row:4; }
+.row4-2{ grid-column:4; grid-row:4; }
+.row4-3{ grid-column:5; grid-row:4; }
+
+.row5{ grid-column:4; grid-row:5; }
+
+/* ===== ТЕКСТ ===== */
+
+.text{
+    margin-top:65px;
+    text-align:center;
+    color:#6e0f14;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.text h1{
+    font-size:28px;
+    font-weight:400;
+    margin:0;
+}
+
+.text p{
+    font-family:'Inter', sans-serif;
+    font-size:20px;
+    margin-top:18px;
+}
+
+/* ===== КНОПКА ===== */
+
+.play-button{
+    margin-top:18px;
+    width:115px;
+    height:52px;
+    background:#6e0f14;
+    border-radius:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 6px 15px rgba(0,0,0,0.15);
+    animation:softPulse 3s infinite ease-in-out;
+}
+
+.play-button svg{
+    width:22px;
+    height:22px;
+    fill:white;
+}
+
+@keyframes softPulse{
+    0%{ transform:scale(1); }
+    50%{ transform:scale(1.03); }
+    100%{ transform:scale(1); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+    <div class="heart">
+        <img src="1.jpg" class="img1">
+        <img src="2.jpg" class="img2">
+        <img src="3.jpg" class="img3">
+        <img src="4.jpg" class="img4">
+
+        <img src="5.jpg" class="img5">
+        <img src="6.jpg" class="img6">
+        <img src="7.jpg" class="img7">
+        <img src="8.jpg" class="img8">
+        <img src="9.jpg" class="img9">
+        <img src="10.jpg" class="img10">
+
+        <img src="11.jpg" class="img11">
+        <img src="12.jpg" class="img12">
+        <img src="13.jpg" class="img13">
+        <img src="14.jpg" class="img14">
+        <img src="15.jpg" class="img15">
+
+        <img src="11.jpg" class="row4-1">
+        <img src="12.jpg" class="row4-2">
+        <img src="13.jpg" class="row4-3">
+        <img src="14.jpg" class="row5">
+    </div>
+
+    <div class="text">
+        <h1>We Were Together For</h1>
+        <p>1285 days.</p>
+
+        <a href="flip.html" class="play-button">
+            <svg viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+        </a>
+    </div>
+
+</div>
+
+<script>
+
+window.addEventListener("load", function(){
+    document.body.classList.add("show");
+});
+
+document.querySelector(".play-button").addEventListener("click", function(e){
+    e.preventDefault();
+    document.body.style.opacity = "0";
+    setTimeout(() => {
+        window.location.href = "flip.html";
+    }, 600);
+});
+
+</script>
+
+</body>
+</html>

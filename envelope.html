@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Envelope</title>
+
+<style>
+
+html, body{
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    font-family:sans-serif;
+}
+
+.screen{
+    width:100%;
+    max-width:390px;
+    height:100dvh;
+    max-height:844px;
+    background:url("your-background.jpg") center/cover no-repeat;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+    box-sizing:border-box;
+}
+
+/* ===== КОНВЕРТ ===== */
+
+.wrapper{
+    position:relative;
+    width:320px;
+    cursor:pointer;
+}
+
+.wrapper img{
+    width:100%;
+    display:block;
+    transition:opacity 0.5s ease;
+}
+
+.opened{
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    transform:translateY(0);
+}
+
+.wrapper.open .closed{
+    opacity:0;
+}
+
+.wrapper.open .opened{
+    opacity:1;
+    animation: flyUp 1.2s cubic-bezier(.2,1.8,.3,1) forwards;
+}
+
+@keyframes flyUp{
+    0%   { transform:translateY(0); }
+    60%  { transform:translateY(-120px); }
+    80%  { transform:translateY(-100px); }
+    100% { transform:translateY(-110px); }
+}
+
+/* ===== КНОПКА PLAY ===== */
+
+.play-button{
+    position:absolute;
+    bottom:calc(env(safe-area-inset-bottom) + 40px);
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:55px;
+    background:#6e0f14;
+    border-radius:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 6px 15px rgba(0,0,0,0.25);
+
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.5s ease;
+}
+
+.play-button svg{
+    width:24px;
+    height:24px;
+    fill:white;
+}
+
+/* появляется после открытия */
+
+.show-button{
+    opacity:1;
+    pointer-events:auto;
+    animation:softPulse 3s infinite ease-in-out;
+}
+
+@keyframes softPulse{
+    0%{ transform:translateX(-50%) scale(1); }
+    50%{ transform:translateX(-50%) scale(1.05); }
+    100%{ transform:translateX(-50%) scale(1); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="screen">
+
+    <div class="wrapper" id="envelope">
+        <img src="closed.png" class="closed">
+        <img src="opened.png" class="opened">
+    </div>
+
+    <!-- КНОПКА -->
+    <a href="choose.html" class="play-button" id="playBtn">
+        <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+    </a>
+
+</div>
+
+<script>
+
+const envelope = document.getElementById("envelope");
+const playBtn = document.getElementById("playBtn");
+
+envelope.addEventListener("click", () => {
+    envelope.classList.add("open");
+
+    // показать кнопку после анимации
+    setTimeout(() => {
+        playBtn.classList.add("show-button");
+    }, 1000);
+});
+
+</script>
+
+</body>
+</html>
