@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=390, initial-scale=1.0">
 <title>Choose</title>
 
 <style>
@@ -10,55 +10,59 @@
 html, body{
     margin:0;
     padding:0;
-    height:100%;
-}
-
-body{
+    background:#000;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#000;
-    opacity:0;
-    transition:opacity 0.8s ease;
+    font-family:-apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-body.show{
-    opacity:1;
-}
-
-/* ===== ЭКРАН IPHONE 13 ===== */
+/* ===== IPHONE 13 ===== */
 
 .screen{
+    width:390px;
+    height:844px;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ===== ФОН ===== */
+
+.background{
+    position:absolute;
     width:100%;
-    max-width:390px;
-    height:100dvh;
-    max-height:844px;
-    background:url("your-background.jpg") center/cover no-repeat;
+    height:100%;
+    object-fit:cover;   /* красиво растягивает */
+    top:0;
+    left:0;
+    z-index:1;
+}
+
+/* ===== КОНТЕНТ ===== */
+
+.content{
+    position:relative;
+    z-index:2;
+    height:100%;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    gap:70px;
-    padding-top:calc(env(safe-area-inset-top) + 40px);
-    padding-bottom:env(safe-area-inset-bottom);
-    box-sizing:border-box;
+    gap:40px;
 }
 
-/* ===== ОБЩИЙ СТИЛЬ ===== */
+/* ===== ВАРИАНТЫ ===== */
 
-.option{
-    width:220px;
-    height:220px;
-    object-fit:contain;
+.choice{
+    width:200px;      /* уменьшили */
+    height:200px;
+    object-fit:cover;
+    border-radius:20px;
     cursor:pointer;
-    transition:transform 0.3s ease;
+    transition:transform 0.25s ease;
 }
 
-.option:hover{
-    transform:scale(1.05);
-}
-
-.option:active{
+.choice:active{
     transform:scale(0.95);
 }
 
@@ -69,28 +73,31 @@ body.show{
 
 <div class="screen">
 
-    <!-- КОНВЕРТ -->
-    <a href="flip.html?target=envelope">
-        <img src="envelope.png" class="option">
-    </a>
+    <!-- ФОН -->
+    <img src="background.jpg" class="background">
 
-    <!-- СЕРДЦЕ -->
-    <a href="flip.html?target=heart">
-        <img src="plastinka.png" class="option">
-    </a>
+    <div class="content">
 
-    <!-- КАМЕРА -->
-    <a href="flip.html?target=camera">
-        <img src="vinyl.png" class="option">
-    </a>
+        <!-- КОНВЕРТ -->
+        <a href="flip.html?target=envelope">
+            <img src="envelope.jpg" class="choice">
+        </a>
+
+        <!-- КАМЕРА -->
+        <a href="flip.html?target=camera">
+            <img src="camera.jpg" class="choice">
+        </a>
+
+        <!-- СЕРДЦЕ / ВИНИЛ -->
+        <a href="flip.html?target=heart">
+            <img src="heart.jpg" class="choice">
+        </a>
+
+    </div>
 
 </div>
 
-<script>
-window.addEventListener("load", () => {
-    document.body.classList.add("show");
-});
-</script>
-
 </body>
 </html>
+
+
